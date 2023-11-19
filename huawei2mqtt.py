@@ -1,10 +1,11 @@
 import asyncio
 import logging
+import os
+import sys
 import time
 
 from huawei_solar import HuaweiSolarBridge
 from dotenv import load_dotenv
-import os
 from modbus_energy_meter.mqtt import publish_data as mqtt_publish_data
 from modbus_energy_meter.transform import transform_result
 
@@ -16,12 +17,14 @@ def init():
     if os.environ.get('HUAWEI_MODBUS_DEBUG') == 'yes':
         loglevel = logging.DEBUG
 
-    logging.basicConfig(
-        filename='huawei-modbus.log',
-        level=loglevel,
-        format='%(asctime)s %(levelname)s %(message)s',
-        datefmt='%Y-%m-%dT%H:%M:%S%z',
-    )
+    logger = logging.getLogger()
+    logger.setLevel(loglevel)
+    handler = logging.StreamHandler(sys.stdout)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    formatter.datefmt = '%Y-%m-%dT%H:%M:%S%z'
+
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
 
 
 async def main(inverter='primary'):
