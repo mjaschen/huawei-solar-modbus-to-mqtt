@@ -3,4 +3,4 @@
 /.env
 __pycache__/
 /*.log
-.env.production
+.env.docker

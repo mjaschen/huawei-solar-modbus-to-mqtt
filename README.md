@@ -2,23 +2,30 @@
 
 ## Installation
 
+### venv
+
 ```shell
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-## Configuration
-
-```shell
+# Create config file
 cp .env.template .env
 vi .env
 ```
 
-## Usage
+Run the script:
 
 ```shell
 ./run.sh
+```
+
+### Docker
+
+```shell
+cp .env.template .env.docker
+vi .env.docker
+docker build -t huawei-solar-modbus-to-mqtt:latest .
+docker run --rm -it huawei-solar-modbus-to-mqtt:latest
 ```
 
 ## Result from querying primary inverter
