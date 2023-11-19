@@ -1,5 +1,26 @@
 # Huawei Solar Inverter Modbus 2 MQTT
 
+## Installation
+
+```shell
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+## Configuration
+
+```shell
+cp .env.template .env
+vi .env
+```
+
+## Usage
+
+```shell
+./run.sh
+```
+
 ## Result from querying primary inverter
 
 ```
