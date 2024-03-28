@@ -83,9 +83,13 @@ docker run --rm -it huawei-solar-modbus-to-mqtt:latest
  'reactive_power': Result(value=1, unit='VA'),
  'shutdown_time': Result(value=None, unit=None),
  'startup_time': Result(value=datetime.datetime(2023, 11, 18, 7, 51, 5, tzinfo=datetime.timezone.utc), unit=None),
- 'state_1': Result(value=['Grid-Connected', 'Grid-Connected normally'], unit=None),
- 'state_2': Result(value=['Unlocked', 'PV connected', 'DSP data collection'], unit=None),
- 'state_3': Result(value=['On-grid', 'Off-grid switch disabled'], unit=None),
+ 'state_1': Result(value=['Grid-Connected',
+Grid-Connected normally'], unit=None),
+ 'state_2': Result(value=['Unlocked',
+PV connected',
+DSP data collection'], unit=None),
+ 'state_3': Result(value=['On-grid',
+Off-grid switch disabled'], unit=None),
  'storage_bus_current': Result(value=0.0, unit='A'),
  'storage_bus_voltage': Result(value=434.8, unit='V'),
  'storage_charge_discharge_power': Result(value=0, unit='W'),
@@ -95,4 +99,25 @@ docker run --rm -it huawei-solar-modbus-to-mqtt:latest
  'storage_state_of_capacity': Result(value=7.0, unit='%'),
  'storage_total_charge': Result(value=62.38, unit='kWh'),
  'storage_total_discharge': Result(value=62.66, unit='kWh')}
+```
+
+## Result from Querying Configuration Registers
+
+```
+{'storage_maximum_charging_power': Result(value=2500, unit='W'),
+storage_maximum_discharging_power': Result(value=2500, unit='W'),
+storage_charging_cutoff_capacity': Result(value=100.0, unit='%'),
+storage_discharging_cutoff_capacity': Result(value=7.0, unit='%'),
+storage_working_mode_settings': Result(value=<StorageWorkingModesC.MAXIMISE_SELF_CONSUMPTION: 2>, unit=None),
+storage_charge_from_grid_function': Result(value=True, unit=None),
+storage_grid_charge_cutoff_state_of_charge': Result(value=50.0, unit='%'),
+storage_fixed_charging_and_discharging_periods': Result(value=[], unit=None),
+storage_power_of_charge_from_grid': Result(value=3000, unit='W'),
+storage_maximum_power_of_charge_from_grid': Result(value=3000, unit='W'),
+storage_time_of_use_charging_and_discharging_periods': Result(value=[HUAWEI_LUNA2000_TimeOfUsePeriod(start_time=0, end_time=360, charge_flag=<ChargeFlag.CHARGE: 0>, days_effective=(True, True, True, True, True, True, True)), HUAWEI_LUNA2000_TimeOfUsePeriod(start_time=480, end_time=1320, charge_flag=<ChargeFlag.DISCHARGE: 1>, days_effective=(True, True, True, True, True, True, True))], unit=None),
+storage_excess_pv_energy_use_in_tou': Result(value=<StorageExcessPvEnergyUseInTOU.FED_TO_GRID: 0>, unit=None),
+storage_backup_power_state_of_charge': Result(value=0.0, unit='%'),
+storage_capacity_control_mode': Result(value=<StorageCapacityControlMode.DISABLE: 0>, unit=None),
+storage_capacity_control_soc_peak_shaving': Result(value=50.0, unit='%'),
+storage_capacity_control_periods': Result(value=[], unit=None)}
 ```

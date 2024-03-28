@@ -27,6 +27,8 @@ def transform_result(data):
             'voltage_PV2': get_value(data.get('pv_02_voltage')),
             'current_PV1': get_value(data.get('pv_01_current')),
             'current_PV2': get_value(data.get('pv_02_current')),
+            'power_PV1': calculate_power(get_value(data.get('pv_01_voltage')), get_value(data.get('pv_01_current'))),
+            'power_PV2': calculate_power(get_value(data.get('pv_02_voltage')), get_value(data.get('pv_02_current'))),
             'power_battery': get_value(data.get('storage_charge_discharge_power')),
             'energy_battery_charge_day': get_value(data.get('storage_current_day_charge_capacity')),
             'energy_battery_discharge_day': get_value(data.get('storage_current_day_discharge_capacity')),
@@ -34,6 +36,12 @@ def transform_result(data):
             'energy_battery_charge_total': get_value(data.get('storage_total_charge')),
             'energy_battery_discharge_total': get_value(data.get('storage_total_discharge'))}
 
+
+def calculate_power(voltage, current):
+    if voltage is None or current is None:
+        return None
+
+    return voltage * current
 
 def get_value(record):
     if record is None:
