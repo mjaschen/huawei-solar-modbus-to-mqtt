@@ -4,6 +4,7 @@ Requires=docker.service
 After=docker.service
 
 [Service]
+WorkingDirectory=/home/mjaschen/huawei-sun2000-modbus-to-mqtt
 ExecStart=/usr/bin/docker run --name huawei2mqtt huawei-sun2000-modbus-to-mqtt:latest
 ExecStop=/usr/bin/docker stop -t 2 huawei2mqtt
 ExecStopPost=/usr/bin/docker rm -f huawei2mqtt
